@@ -22,17 +22,18 @@
 #include "FSM_UI.h"
 #include "sudoku_situation.h"
 
-class sudoku_TextUi:public FSM_UI<sudoku_situation>
+class sudoku_TextUi:public FSM_base::FSM_UI<sudoku_situation>
 {
  public:
   sudoku_TextUi(void);
 
   //Methods inherited from interface
-  void displaySpecificSituation(const sudoku_situation *p_situation);
-  string toString(void)const;
+  void display_specific_situation(const sudoku_situation & p_situation);
 	
-
-
+  const std::string & get_class_name(void)const;
+    
  private:
+  static const std::string m_class_name;
+
 };
 #endif

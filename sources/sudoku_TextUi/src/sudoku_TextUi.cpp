@@ -19,30 +19,39 @@
 #include "sudoku_TextUi.h"
 #include "sudoku_situation.h"
 
+using namespace std;
+
+//------------------------------------------------------------------------------
 sudoku_TextUi::sudoku_TextUi(void):FSM_UI<sudoku_situation>()
 {
 }
 
-void sudoku_TextUi::displaySpecificSituation(const sudoku_situation *p_situation)
+//------------------------------------------------------------------------------
+void sudoku_TextUi::display_specific_situation(const sudoku_situation & p_situation)
 {
-  cout << p_situation->toString() << endl ;
+  cout << p_situation.to_string() << endl ;
 }
 
-string sudoku_TextUi::toString(void)const
+//------------------------------------------------------------------------------
+const std::string & sudoku_TextUi::get_class_name(void)const
 {
-  return "sudoku_TextUi";
+  return m_class_name;
 }
 
 
-FSM_UI_if* createGameOfLifeTextUi(void)
+//------------------------------------------------------------------------------
+FSM_interfaces::FSM_UI_if & create_sudoku_text_ui(void)
 {
-  return new sudoku_TextUi();
+  return *(new sudoku_TextUi());
 }
 
+//------------------------------------------------------------------------------
 extern "C"
 {
-  void registerFsmUi(map<string,FSM_UI_creator> *p_factory)
+  void register_fsm_ui(map<string,FSM_interfaces::FSM_UI_creator_t> & p_factory)
   {
-    registerFsmUi("sudoku",createGameOfLifeTextUi,p_factory);
+    register_fsm_ui("sudoku",create_sudoku_text_ui,p_factory);
   }
 }
+const std::string sudoku_TextUi::m_class_name = "sudoku_TextUi";
+//EOF
