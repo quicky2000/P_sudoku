@@ -4,3 +4,11 @@
 
 P_sudoku is the integration repository for Sudoku jigsaw implementation using FSM 
  
+# Subtrees
+#----------
+git@github.com:quicky2000/sudoku.git
+git@github.com:quicky2000/sudoku_TextUi.git
+git@github.com:quicky2000/FSM_base.git
+git@github.com:quicky2000/FSM_interfaces.git
+git@github.com:quicky2000/quicky_tools.git
+#EOF
